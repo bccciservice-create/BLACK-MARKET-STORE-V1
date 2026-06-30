@@ -1,0 +1,198 @@
+  <!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLACK MARKET STORE | Marketplace Cote d'Ivoire</title>
+  <meta name="description" content="BLACK MARKET STORE, marketplace premium pour acheter, vendre et piloter une boutique en Cote d'Ivoire.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <div id="loader" class="loader-screen">
+    <div class="loader-card">
+      <span class="logo-mark">BMS</span>
+      <strong>BLACK MARKET STORE</strong>
+      <div class="loader-line"><span></span></div>
+      <small>Powered by AmstrongBKingChargement du marche ivoirien...</small>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="top-strip">
+      <span><i class="fa-solid fa-shield-heart"></i> Paiement securise</span>
+      <span><i class="fa-solid fa-truck-fast"></i> Livraison Abidjan et interieur</span>
+      <span><i class="fa-solid fa-headset"></i> Support 7j/7</span>
+    </div>
+    <nav class="main-nav">
+      <button id="mobileMenuBtn" class="icon-btn mobile-only" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+      <a class="brand" href="#home" data-route="home"><span class="logo-mark">BMS</span><span>BLACK MARKET<br>STORE</span></a>
+      <form id="searchForm" class="search-bar">
+        <select id="categorySelect" aria-label="Toutes les categories"></select>
+        <input id="searchInput" type="search" placeholder="Rechercher telephone, mode, voiture, service...">
+        <button type="submit" aria-label="Rechercher"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
+      <div class="nav-actions">
+        <button class="nav-link" data-scroll="budget"><i class="fa-solid fa-wallet"></i><span>Mon Budget</span></button>
+        <button class="nav-link" data-scroll="promos"><i class="fa-solid fa-tags"></i><span>Promos</span></button>
+        <button class="nav-link" data-scroll="shops"><i class="fa-solid fa-store"></i><span>Boutiques</span></button>
+        <button class="icon-btn" id="favoriteBtn" aria-label="Favoris"><i class="fa-regular fa-heart"></i><b id="favCount">0</b></button>
+        <button class="icon-btn" id="cartBtn" aria-label="Panier"><i class="fa-solid fa-basket-shopping"></i><b id="cartCount">0</b></button>
+        <button class="primary-btn" id="loginOpenBtn"><i class="fa-solid fa-user"></i><span>Connexion</span></button>
+        <button class="ghost-btn" id="registerOpenBtn">Inscription</button>
+      </div>
+    </nav>
+    <div id="mobilePanel" class="mobile-panel">
+      <button data-scroll="categories">Categories</button>
+      <button data-scroll="budget">Mon Budget</button>
+      <button data-scroll="auctions">Encheres</button>
+      <button data-scroll="support">Support</button>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="hero-slider" id="heroSlider"></div>
+      <div class="hero-content">
+        <p class="eyebrow">Marketplace premium ivoirienne</p>
+        <h1>BLACK MARKET STORE</h1>
+        <p>Achetez, vendez et pilotez votre boutique avec une experience moderne inspiree des plus grandes plateformes.</p>
+        <div class="hero-actions">
+          <button class="primary-btn large" data-scroll="products"><i class="fa-solid fa-bag-shopping"></i> Explorer le marche</button>
+          <button class="glass-btn" id="sellerQuickBtn"><i class="fa-solid fa-shop"></i> Devenir vendeur</button>
+        </div>
+        <div class="hero-metrics" id="heroMetrics"></div>
+      </div>
+      <div class="hero-dots" id="heroDots"></div>
+    </section>
+
+    <section class="quick-filters" id="quickFilters"></section>
+
+    <section class="section" id="categories">
+      <div class="section-head">
+        <div><p class="eyebrow">Rayons</p><h2>Toutes les categories</h2></div>
+        <button class="text-btn" data-scroll="products">Voir tous les produits <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+      <div class="category-grid" id="categoryGrid"></div>
+    </section>
+
+    <section class="section split-band" id="budget">
+      <div class="budget-panel">
+        <p class="eyebrow">Mon Budget</p>
+        <h2>Trouvez ce qui respecte votre portefeuille</h2>
+        <div class="budget-form">
+          <label>Minimum <input id="budgetMin" type="number" min="0" placeholder="0 FCFA"></label>
+          <label>Maximum <input id="budgetMax" type="number" min="0" placeholder="250000 FCFA"></label>
+          <button id="applyBudget" class="primary-btn"><i class="fa-solid fa-filter"></i> Appliquer</button>
+        </div>
+      </div>
+      <div class="ai-panel">
+        <h3><i class="fa-solid fa-wand-magic-sparkles"></i> Assistant IA pret</h3>
+        <p>Interfaces prevues pour suggestion du meilleur prix, verification fraude, images dupliquees, titres et descriptions ameliores.</p>
+        <div class="ai-tags"><span>Prix intelligent</span><span>Anti-fraude</span><span>SEO annonces</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="products">
+      <div class="section-head">
+        <div><p class="eyebrow">Catalogue vivant</p><h2>Produits populaires</h2></div>
+        <div class="filter-row">
+          <select id="cityFilter"></select>
+          <select id="stateFilter"></select>
+          <select id="brandFilter"></select>
+          <button id="resetFilters" class="ghost-btn">Reinitialiser</button>
+        </div>
+      </div>
+      <div id="productGrid" class="product-grid"></div>
+    </section>
+
+    <section class="section" id="promos">
+      <div class="section-head"><div><p class="eyebrow">Offres</p><h2>Promotions et nouveautes</h2></div></div>
+      <div class="promo-layout">
+        <div id="promoBanner" class="promo-banner"></div>
+        <div id="newProducts" class="mini-product-list"></div>
+      </div>
+    </section>
+
+    <section class="section" id="shops">
+      <div class="section-head"><div><p class="eyebrow">Vendeurs verifies</p><h2>Boutiques en vedette</h2></div></div>
+      <div id="shopGrid" class="shop-grid"></div>
+    </section>
+
+    <section class="section" id="auctions">
+      <div class="section-head"><div><p class="eyebrow">En direct</p><h2>Ventes aux encheres</h2></div></div>
+      <div id="auctionGrid" class="auction-grid"></div>
+    </section>
+
+    <section class="section dashboard-shell hidden" id="dashboard">
+      <aside class="dash-sidebar">
+        <div class="dash-user"><span id="dashAvatar">BM</span><div><strong id="dashName">Utilisateur</strong><small id="dashRole">Role</small></div></div>
+        <div id="dashMenu" class="dash-menu"></div>
+      </aside>
+      <div class="dash-content">
+        <div class="section-head">
+          <div><p class="eyebrow" id="dashEyebrow">Espace prive</p><h2 id="dashTitle">Dashboard</h2></div>
+          <button id="logoutBtn" class="ghost-btn"><i class="fa-solid fa-right-from-bracket"></i> Deconnexion</button>
+        </div>
+        <div id="dashPanels"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="support">
+    <div>
+      <a class="brand" href="#home"><span class="logo-mark">BMS</span><span>BLACK MARKET<br>STORE</span></a>
+      <p>Marketplace demo complete, structuree pour une future connexion Supabase.</p>
+    </div>
+    <div><h4>Support</h4><p>support@blackmarketstore.ci</p><p>+225 07 00 00 00 00</p></div>
+    <div><h4>Langues</h4><button id="langBtn" class="ghost-btn">Francais / English</button></div>
+    <div><h4>Confiance</h4><p>Validation produits, GPS livraison, paiements, commissions et journal admin prevus.</p></div>
+  </footer>
+
+  <div id="authModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card auth-card">
+      <button class="close-btn" data-close="authModal" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+      <div class="auth-tabs">
+        <button id="loginTab" class="active">Connexion</button>
+        <button id="buyerTab">Compte acheteur</button>
+        <button id="sellerTab">Compte vendeur</button>
+      </div>
+      <form id="loginForm" class="auth-form">
+        <h3>Connexion unique</h3>
+        <input id="loginEmail" type="email" placeholder="Email" required>
+        <input id="loginPassword" type="password" placeholder="Mot de passe" required>
+        <button class="primary-btn" type="submit">Se connecter</button>
+        <small>Super Admin: admin@blackmarketstore.ci / BMS@2026!SuperAdmin#CI</small>
+      </form>
+      <form id="buyerForm" class="auth-form hidden">
+        <h3>Creer un compte Acheteur</h3>
+        <input id="buyerName" placeholder="Nom complet" required>
+        <input id="buyerEmail" type="email" placeholder="Email" required>
+        <input type="password" placeholder="Mot de passe" required>
+        <button class="primary-btn" type="submit">Creer mon compte</button>
+      </form>
+      <form id="sellerForm" class="auth-form hidden">
+        <h3>Creer une boutique Vendeur</h3>
+        <div class="form-grid"><input placeholder="Nom" required><input placeholder="Prenom" required></div>
+        <div class="form-grid"><input placeholder="Telephone" required><input id="sellerEmail" type="email" placeholder="Email" required></div>
+        <input type="password" placeholder="Mot de passe" required>
+        <input id="shopName" placeholder="Nom boutique" required>
+        <input type="url" placeholder="Logo URL">
+        <textarea placeholder="Description boutique"></textarea>
+        <div class="form-grid"><input placeholder="Ville" required><input placeholder="Categorie" required></div>
+        <button class="primary-btn" type="submit">Ouvrir ma boutique</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="productModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card product-detail">
+      <button class="close-btn" data-close="productModal" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+      <div id="productDetail"></div>
+    </div>
+  </div>
+
+  <div id="toastStack" class="toast-stack"></div>
+  <script src="script.js"></script>
+</body>
+</html>
